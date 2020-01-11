@@ -1,7 +1,10 @@
+#ifndef GENERATOR_H
+#define GENERATOR_H
+
 /* --- HEADER ------------------------------------------------ (14 bytes) ---------------------------- */
 const short _BMP_HEADER_SIGNATURE = 0x4D42; // HEADER image    (2 bytes : 0x424D)
-int _BMP_HEADER_SIZE              = 0;      // HEADER size     (4 bytes)
-const int _BMP_HEADER_RESERVED    = 0;      // HEADER reserved (4 bytes)
+int _BMP_HEADER_FILE_SIZE         = 0x36;   // HEADER FileSize (4 bytes)
+const int _BMP_HEADER_RESERVED    = 0x00;   // HEADER reserved (4 bytes)
 const int _BMP_HEADER_DATA_OFFST  = 0x36;   // HEADER offset   (4 bytes)
 
 /* --- INFO HEADER ---------------------------------------------------------------------------- (40 bytes) --- */
@@ -15,7 +18,7 @@ const int _BMP_INFHEADER_IMGSIZE              = 0;     // INF_HEADER img size af
 const float _BMP_INFHEADER_PIXELS_PER_CM_COEF = 0.08f; // INF_HEADER_COEF
 int _BMP_INFHEADER_X_PIXELS_PER_M             = 0;     // INF_HEADER X pixels per meter         (4 bytes)
 int _BMP_INFHEADER_Y_PIXELS_PER_M             = 0;     // INF_HEADER Y pixels per meter         (4 bytes)
-const int _BMP_INFHEADER_COLORS_USED          = 0;     // INF_HEADER colors used                (4 bytes) (Ex : 8bit / pixels = 100h (256 colors))
+const int _BMP_INFHEADER_COLORS_USED          = 0;     // INF_HEADER colors used                (4 bytes) (Ex : 8bit / pixels = 100h (256 colors)) If > 8 bit not necessary
 const int _BMP_INFHEADER_IMPORTANT_CLR        = 0;     // INF_HEADER important color            (4 bytes) (0 = ALL)
 
 /* --- COLOR TABLE ------------------------------------------------------------------- (min 4 bytes) --- */
@@ -31,3 +34,9 @@ static int _REFERENCE_COLOR[8][4] = {
     {0x24,0x24,0x24,0x00},
     {0x00,0x00,0x00,0x00}
 };
+
+char _BMP_END_OF_LINE = 0x00;
+
+int main(int argc, char *argv[]);
+
+#endif

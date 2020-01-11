@@ -3,19 +3,20 @@
 
 int main(int argc, char *argv[]) {
 
-    printf("Building BitMap picture");
+    printf("Building BitMap picture...");
 
     FILE *fp;
 
     fp = fopen ("pic.bmp","w");
     
-    /* Write HEADER*/
+    /* --------- File Generation --------- */
+    // Write HEADER
     fwrite(&_BMP_HEADER_SIGNATURE, 1, sizeof(_BMP_HEADER_SIGNATURE), fp);
-    fwrite(&_BMP_HEADER_SIZE, 1, sizeof(_BMP_HEADER_SIZE), fp);
+    fwrite(&_BMP_HEADER_FILE_SIZE, 1, sizeof(_BMP_HEADER_FILE_SIZE), fp);
     fwrite(&_BMP_HEADER_RESERVED, 1, sizeof(_BMP_HEADER_RESERVED), fp);
     fwrite(&_BMP_HEADER_DATA_OFFST, 1, sizeof(_BMP_HEADER_DATA_OFFST), fp);
     
-    /* Write HEADER INFO */
+    //Write HEADER INFO
     fwrite(&_BMP_INFHEADER_SIZE, 1, sizeof(_BMP_INFHEADER_SIZE), fp);
     fwrite(&_BMP_INFHEADER_WIDTH, 1, sizeof(_BMP_INFHEADER_WIDTH), fp);
     fwrite(&_BMP_INFHEADER_HEIGHT, 1, sizeof(_BMP_INFHEADER_HEIGHT), fp);
@@ -28,8 +29,13 @@ int main(int argc, char *argv[]) {
     fwrite(&_BMP_INFHEADER_COLORS_USED, 1, sizeof(_BMP_INFHEADER_COLORS_USED), fp);
     fwrite(&_BMP_INFHEADER_IMPORTANT_CLR, 1, sizeof(_BMP_INFHEADER_IMPORTANT_CLR), fp);
 
-    /* Write COLOR TABLE */
+    // Write COLOR TABLE
+
+    // Write DATA
+
+    /* ------ End File Generation -------- */
 
     fclose (fp);
+    printf("Done.\n");
     return 0;
 }
